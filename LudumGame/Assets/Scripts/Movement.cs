@@ -16,7 +16,7 @@ public class Movement : MonoBehaviour {
 	void Update () 
 	{
 		input = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxis ("Vertical"));
-		transform.rotation = Quaternion.LookRotation (input);
+		transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.LookRotation (input), Time.deltaTime * 10f);
 //		transform.Translate (input * moveSpeed *Time.deltaTime, Space.World);
 //		if (transform.localRotation.y < 0.7) 
 //		{

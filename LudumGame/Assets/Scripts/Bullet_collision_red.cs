@@ -16,6 +16,8 @@ public class Bullet_collision_red : MonoBehaviour {
 		if (col.gameObject.tag == "RedWall") 
 		{
 			Debug.Log ("hit red");
+			Destroy(col.gameObject);
+			Destroy(this.gameObject);
 		}
 	}
 }
