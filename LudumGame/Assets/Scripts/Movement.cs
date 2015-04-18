@@ -36,4 +36,11 @@ public class Movement : MonoBehaviour {
 		transform.position = spawn;
 		Instantiate(SpawnParticle, transform.position, Quaternion.Euler(270,0,0));
 	}
+	void OnTriggerEnter(Collider other)
+	{
+		if (other.transform.tag == "Goal")
+		{
+			GameManager.CompleteLevel();
+		}
+}
 }
