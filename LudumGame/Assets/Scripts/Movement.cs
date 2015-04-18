@@ -16,29 +16,60 @@ public class Movement : MonoBehaviour {
 	void Update () 
 	{
 		input = new Vector3 (Input.GetAxisRaw ("Horizontal"), 0, Input.GetAxis ("Vertical"));
-		if (transform.localRotation.y < 0.7) 
-		{
-			if (Input.GetAxisRaw ("Horizontal") > 0) 
-			{ 
-				transform.Rotate (Vector3.up, 100 * Time.deltaTime);
-				Debug.Log ("y" + transform.localRotation.y);
-				Debug.Log ("x" + transform.localRotation.x);
-				Debug.Log ("z" + transform.localRotation.z);
+		transform.rotation = Quaternion.LookRotation (input);
+//		transform.Translate (input * moveSpeed *Time.deltaTime, Space.World);
+//		if (transform.localRotation.y < 0.7) 
+//		{
+//			if (Input.GetAxisRaw ("Horizontal") > 0) 
+//			{ 
+//				transform.Rotate (Vector3.up, 100 * Time.deltaTime);
+//
+//			}
+//		}
+//		if (transform.localRotation.y > -0.7) 
+//		{
+//			if (Input.GetAxisRaw ("Horizontal") < 0) 
+//			{ 
+//				transform.Rotate (Vector3.down, 100 * Time.deltaTime);
+//				
+//			}
+//		}
+//			
+//		if (transform.localRotation.y > 0) 
+//		{
+//			if (Input.GetAxisRaw ("Vertical") > 0) 
+//			{ 
+//				transform.Rotate (Vector3.down, 100 * Time.deltaTime);
+//				Debug.Log ("y" + transform.localRotation.y);
+//				Debug.Log ("x" + transform.localRotation.x);
+//				Debug.Log ("z" + transform.localRotation.z);
+//				
+//			}
+//		}
+//		if (transform.localRotation.y < 0) 
+//		{
+//			if (Input.GetAxisRaw ("Vertical") > 0) 
+//			{ 
+//				transform.Rotate (Vector3.down, -100 * Time.deltaTime);
+//				Debug.Log ("y" + transform.localRotation.y);
+//				Debug.Log ("x" + transform.localRotation.x);
+//				Debug.Log ("z" + transform.localRotation.z);
+//				
+//			}
+//		}
+//		if (transform.localRotation.y < 0) 
+//		{
+//			if (Input.GetAxisRaw ("Vertical") < 0) 
+//			{ 
+//				transform.Rotate (Vector3.down, 100 * Time.deltaTime);
+//
+//				Debug.Log ("y" + transform.localRotation.y);
+//				Debug.Log ("x" + transform.localRotation.x);
+//				Debug.Log ("z" + transform.localRotation.z);
+//			}
+//		}
 
-			}
-		}
-		if (transform.localRotation.y > -0.7) 
-		{
-			if (Input.GetAxisRaw ("Horizontal") < 0) 
-			{ 
-				transform.Rotate (Vector3.down, 100 * Time.deltaTime);
-				Debug.Log ("y" + transform.localRotation.y);
-				Debug.Log ("x" + transform.localRotation.x);
-				Debug.Log ("z" + transform.localRotation.z);
-				
-			}
-		}
-			
+
 		if(GetComponent<Rigidbody>().velocity.magnitude < maxSpeed)
 		{
 
