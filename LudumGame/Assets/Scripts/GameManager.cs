@@ -4,7 +4,7 @@ using System.Collections;
 public class GameManager : MonoBehaviour {
 
 	public static int currentLevel = 0;
-	public static int unlockedLevel;
+	//public static int unlockedLevel;
 	
 	void Start () {
 	
