@@ -12,16 +12,25 @@ public class ProjectileShoot : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetKeyDown ("[1]")) {
-			GameObject projectile_red = Instantiate (prefab) as GameObject;
-			projectile_red.transform.position = transform.position + Vector3.up;
-			Rigidbody rb = projectile_red.GetComponent<Rigidbody> ();
-			rb.velocity = (transform.rotation * Vector3.forward) * 10;
+			if (GetComponent<AmmunitionController> ().getRedAmmo () > 0) {
+			
+				GameObject projectile_red = Instantiate (prefab) as GameObject;
+				projectile_red.transform.rotation = transform.rotation;
+				projectile_red.transform.position = transform.position + Vector3.up;
+				Rigidbody rb = projectile_red.GetComponent<Rigidbody> ();
+				rb.velocity = (transform.rotation * Vector3.forward) * 10;
+				GetComponent<AmmunitionController>().decreaseRedAmmo();
+			}
 		}
 		if (Input.GetKeyDown ("[2]")) {
-			GameObject projectile_blue = Instantiate (prefab2) as GameObject;
-			projectile_blue.transform.position = transform.position + Vector3.up;
-			Rigidbody rb = projectile_blue.GetComponent<Rigidbody> ();
-			rb.velocity = (transform.rotation * Vector3.forward) * 10;
+			if (GetComponent<AmmunitionController> ().getBlueAmmo () > 0) {
+				GameObject projectile_blue = Instantiate (prefab2) as GameObject;
+				projectile_blue.transform.rotation = transform.rotation;
+				projectile_blue.transform.position = transform.position + Vector3.up;
+				Rigidbody rb = projectile_blue.GetComponent<Rigidbody> ();
+				rb.velocity = (transform.rotation * Vector3.forward) * 10;
+				GetComponent<AmmunitionController>().decreaseBlueAmmo();
+			}
 		}
 	}
 }
